@@ -38,7 +38,6 @@ export const UserLink = ({
 export const By = ({ id }: { id: string }) => {
   const isUser = id.startsWith("user_")
   const isCustomer = id.startsWith("cus_")
-
   // Hooks must run unconditionally (Rules of Hooks); the `enabled` flags
   // already prevent fetching for the branch that does not apply.
   const { user } = useUser(id, undefined, { enabled: isUser }) // todo: extend to support customers
@@ -47,6 +46,7 @@ export const By = ({ id }: { id: string }) => {
   if (!isUser && !isCustomer) {
     return null
   }
+
 
   const actor = isUser ? user : customer
 
